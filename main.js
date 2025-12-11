@@ -40,6 +40,16 @@ function str2ab(str) {
 
 export async function onClientRequest(request) {
 	try {
+		// Handle GET requests
+		if (request.method === 'GET') {
+			request.respondWith(
+				200,
+				{ 'Content-Type': ['text/plain'] },
+				'Hello from Istiak'
+			);
+			return;
+		}
+
 		// Only handle POST requests
 		if (request.method !== 'POST') {
 			request.respondWith(
