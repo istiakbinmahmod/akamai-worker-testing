@@ -3,7 +3,7 @@
 EDGEWORKER_ID = 103768
 
 # Version (update this for each deployment)
-VERSION = 1.18
+VERSION = 1.19
 
 # Bundle files
 BUNDLE_NAME = edgeworker-bundle.tgz
