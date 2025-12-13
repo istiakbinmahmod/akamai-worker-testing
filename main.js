@@ -37,9 +37,10 @@ export async function responseProvider(request) {
 			);
 		}
 
-		let payload;		
+		let payload;
+		let body;
 		try {
-			const body = await request.text();
+			body = await request.text();
 			payload = JSON.parse(body);
 		} catch (parseError) {
 			return createResponse(
@@ -66,6 +67,19 @@ export async function responseProvider(request) {
 				400,
 				{ 'Content-Type': ['text/plain'] },
 				'Missing key or value in request body'
+			);
+		}
+
+		// Validate webhook signature
+		const signature = request.headers.get('X-Hub-Signature');
+		const secret = 'rgPZtW33naOl0w3LNdyePEL--7NOgxVRKFVCcGZdkMI'; // Replace with your actual secret
+		const isValidSignature = verifyWebhookSignature(body, signature, secret);
+
+		if (!isValidSignature) {
+			return createResponse(
+				401,
+				{ 'Content-Type': ['text/plain'] },
+				'Invalid webhook signature'
 			);
 		}
 
