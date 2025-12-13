@@ -1,30 +1,53 @@
-import { crypto } from 'crypto';
 import { createResponse } from 'create-response';
-import { logger } from 'log';
+import { crypto } from 'crypto';
+import { TextEncoder } from 'encoding';
 import { EdgeKV } from './edgekv.js';
+
+function hexToBytes(hex) {
+    const bytes = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < hex.length; i += 2) {
+        bytes[i / 2] = parseInt(hex.substr(i, 2), 16);
+    }
+    return bytes;
+}
 
 /**
  * Verify webhook signature using HMAC-SHA1
- * @param {string} payload - The raw request body as string
- * @param {string} signature - The signature from X-Hub-Signature header
- * @param {string} secret - The webhook secret
- * @returns {boolean} - True if signature is valid
+ * @param {string} payload - The raw payload string
+ * @param {string} signature - The signature from the webhook header
+ * @param {string} secret - The shared secret for HMAC
+ * @returns {Promise<boolean>} - True if signature is valid, false otherwise
  */
-function verifyWebhookSignature(payload, signature, secret) {
-	if (!signature || !signature.startsWith('sha1=')) {
-		return false;
-	}
-
-	const receivedDigest = signature.substring(5);
-	
-	// Create HMAC-SHA1 hash
-	const hmac = crypto.createHmac('sha1', secret);
-	hmac.update(payload);
-	const computedDigest = hmac.digest('hex');
-
-	// Constant-time comparison
-	return receivedDigest === computedDigest;
+async function verifyWebhookSignature(payload, signature, secret) {
+    if (!signature || !signature.startsWith('sha1=')) {
+        return false;
+    }
+    
+    // Remove 'sha1=' prefix
+    const cleanSig = signature.substring(5);
+    
+    const encoder = new TextEncoder();
+    const keyData = encoder.encode(secret);
+    
+    const cryptoKey = await crypto.subtle.importKey(
+        'raw',
+        keyData,
+        { name: 'HMAC', hash: 'SHA-1' },
+        false,
+        ['verify']
+    );
+    
+    const signatureBytes = hexToBytes(cleanSig);
+    const payloadBytes = encoder.encode(payload);
+    
+    return await crypto.subtle.verify(
+        'HMAC',
+        cryptoKey,
+        signatureBytes,
+        payloadBytes
+    );
 }
+
 
 export async function responseProvider(request) {
 	try {
@@ -73,7 +96,7 @@ export async function responseProvider(request) {
 		// Validate webhook signature
 		const signature = request.getHeader('X-Hub-Signature')[0];
 		const secret = 'RKQcsROhPZOg5IBPul5KfbWayllEnYd2n1rL3xiYnYU'; // Replace with your actual secret
-		const isValidSignature = verifyWebhookSignature(body, signature, secret);
+		const isValidSignature = await verifyWebhookSignature(body, signature, secret);
 
 		if (!isValidSignature) {
 			return createResponse(

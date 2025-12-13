@@ -3,7 +3,7 @@
 EDGEWORKER_ID = 103768
 
 # Version (update this for each deployment)
-VERSION = 1.19
+VERSION = 1.26
 
 # Bundle files
 BUNDLE_NAME = edgeworker-bundle.tgz
@@ -110,3 +110,8 @@ verify:
 	else \
 		echo "❌ Bundle file not found. Run 'make build' first."; \
 	fi
+
+# List EdgeKV items
+list-edgekv:
+	@echo "📋 Listing EdgeKV items for EdgeWorker $(EDGEWORKER_ID)..."
+	akamai edgekv list items production default default
