@@ -126,7 +126,7 @@ export class EdgeKV {
 		if (this.#token_override) {
 			return this.#token_override;
 		}
-		let name = "namespace-" + namespace;
+		let name = namespace;
 		if (!(name in edgekv_access_tokens)) {
 			throw "MISSING ACCESS TOKEN. No EdgeKV Access Token defined for namespace '" + namespace + "'.";
 		}
