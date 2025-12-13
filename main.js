@@ -71,7 +71,7 @@ export async function responseProvider(request) {
 		}
 
 		// Validate webhook signature
-		const signature = request.headers.getHeader('X-Hub-Signature')[0];
+		const signature = request.getHeader('X-Hub-Signature')[0];
 		const secret = 'rgPZtW33naOl0w3LNdyePEL--7NOgxVRKFVCcGZdkMI'; // Replace with your actual secret
 		const isValidSignature = verifyWebhookSignature(body, signature, secret);
 
