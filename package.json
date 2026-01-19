@@ -1,0 +1,24 @@
+{
+  "name": "akamai-worker-testing",
+  "version": "1.0.0",
+  "description": "This EdgeWorker processes Optimizely webhook POST requests, verifies HMAC-SHA1 signatures, and stores webhook data in EdgeKV.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./scripts/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/istiakbinmahmod/akamai-worker-testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/istiakbinmahmod/akamai-worker-testing/issues"
+  },
+  "homepage": "https://github.com/istiakbinmahmod/akamai-worker-testing#readme",
+  "devDependencies": {
+    "esbuild": "^0.27.2"
+  }
+}

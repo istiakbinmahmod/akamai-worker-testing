@@ -1,6 +1,3 @@
-import { createResponse } from 'create-response';
-import { crypto } from 'crypto';
-import { TextEncoder } from 'encoding';
 import { EdgeKV } from './edgekv.js';
 
 function hexToBytes(hex) {
@@ -56,7 +53,7 @@ export async function responseProvider(request) {
 			return createResponse(
 				405,
 				{ 'Content-Type': ['text/plain'] },
-				'Please send a POST request with JSON body containing webhook payload!'
+				'Oh please send a POST request with JSON body containing webhook payload!!'
 			);
 		}
 

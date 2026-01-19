@@ -3,7 +3,7 @@
   "description": "Optimizely Webhook Handler - Processes POST requests with signature verification and stores data in EdgeKV",
   "misc": {
     "dependencies": {
-      "edgekv.js": "1.0"
+      "edgekv.js": "0.6.3"
     }
   }
 }

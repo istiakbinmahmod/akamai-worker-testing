@@ -1,13 +1,12 @@
 # Akamai EdgeWorker Makefile
 # EdgeWorker ID
-EDGEWORKER_ID = 103768
+EDGEWORKER_ID = 104541
 
 # Version (update this for each deployment)
-VERSION = 1.26
+# VERSION = 1.26
 
 # Bundle files
 BUNDLE_NAME = edgeworker-bundle.tgz
-BUNDLE_FILES = main.js bundle.json edgekv.js edgekv_tokens.js
 
 .PHONY: help build upload activate-staging activate-production deploy-staging deploy-production status logs clean
 
@@ -34,8 +33,10 @@ help:
 
 # Build the bundle
 build:
-	@echo "📦 Building EdgeWorker bundle..."
-	tar -czvf $(BUNDLE_NAME) $(BUNDLE_FILES)
+	@echo "🔨 Running esbuild..."
+	npm run build
+	@echo "📦 Creating EdgeWorker bundle..."
+	tar -czvf $(BUNDLE_NAME) -C dist main.js edgekv.js edgekv_tokens.js -C .. bundle.json
 	@echo "✅ Bundle created: $(BUNDLE_NAME)"
 	@tar -tzf $(BUNDLE_NAME)
 
