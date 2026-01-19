@@ -19,7 +19,7 @@ function hexToBytes(hex) {
  * @returns {Promise<boolean>} - True if signature is valid, false otherwise
  */
 async function verifyWebhookSignature(payload, signature, secret) {
-    if (!signature || !signature.startsWith('sha1=')) {
+    if (!signature?.startsWith('sha1=')) {
         return false;
     }
     
@@ -56,7 +56,7 @@ export async function responseProvider(request) {
 			return createResponse(
 				405,
 				{ 'Content-Type': ['text/plain'] },
-				'Send a POST request with JSON body containing webhook payload.'
+				'Please send a POST request with JSON body containing webhook payload!'
 			);
 		}
 

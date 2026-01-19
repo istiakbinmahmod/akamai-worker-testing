@@ -115,3 +115,20 @@ verify:
 list-edgekv:
 	@echo "📋 Listing EdgeKV items for EdgeWorker $(EDGEWORKER_ID)..."
 	akamai edgekv list items production default default
+
+# Start Sandbox client
+start-sandbox-client:
+	@echo "🚀 Starting EdgeWorker Sandbox client..."
+	cd ~/.akamai-cli/cache/sandbox-cli/downloads/sandbox-client-1.5.0-RELEASE/bin && ./sandbox.sh
+
+# Add Edgeworker to Sandbox
+add-sandbox-edgeworker:
+	@echo "➕ Adding EdgeWorker $(EDGEWORKER_ID) to Sandbox..."
+	akamai sandbox add-edgeworker $(EDGEWORKER_ID) ./$(BUNDLE_NAME)
+	@echo "✅ EdgeWorker added to Sandbox"
+
+# Update Sandbox
+update-sandbox:
+	@echo "🔄 Updating Sandbox with EdgeWorker $(EDGEWORKER_ID)..."
+	akamai sandbox update-edgeworker $(EDGEWORKER_ID) ./$(BUNDLE_NAME)
+	@echo "✅ Sandbox updated"
