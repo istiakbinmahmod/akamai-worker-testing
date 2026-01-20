@@ -133,3 +133,13 @@ update-sandbox:
 	@echo "🔄 Updating Sandbox with EdgeWorker $(EDGEWORKER_ID)..."
 	akamai sandbox update-edgeworker $(EDGEWORKER_ID) ./$(BUNDLE_NAME)
 	@echo "✅ Sandbox updated"
+
+# Install npm dependencies freshly
+fresh-install:
+	@echo "📦 Performing fresh npm install..."
+	rm -rf node_modules
+	npm install
+
+# Build and update sandbox
+build-update-sandbox: fresh-install build update-sandbox
+	@echo "✅ Sandbox build and update complete!"

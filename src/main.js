@@ -1,4 +1,6 @@
 import { EdgeKV } from './edgekv.js';
+import * as DATA from './data.json';
+import { applyExperiments } from '@optimizely/edge-delivery';
 
 function hexToBytes(hex) {
     const bytes = new Uint8Array(hex.length / 2);
@@ -31,7 +33,7 @@ async function verifyWebhookSignature(payload, signature, secret) {
         keyData,
         { name: 'HMAC', hash: 'SHA-1' },
         false,
-        ['verify']
+        ['verify'],
     );
     
     const signatureBytes = hexToBytes(cleanSig);
@@ -41,90 +43,105 @@ async function verifyWebhookSignature(payload, signature, secret) {
         'HMAC',
         cryptoKey,
         signatureBytes,
-        payloadBytes
+        payloadBytes,
     );
 }
 
 
 export async function responseProvider(request) {
-	try {
-		// Only handle POST requests
-		if (request.method !== 'POST') {
-			return createResponse(
-				405,
-				{ 'Content-Type': ['text/plain'] },
-				'Oh please send a POST request with JSON body containing webhook payload!!'
-			);
-		}
-
-		let payload;
-		let body;
+    try {
+    // Only handle POST requests
+        // if (request.method !== 'POST') {
+        //     return createResponse(
+        //     	405,
+        //     	{ 'Content-Type': ['text/plain'] },
+        //     	'Oh no please send a POST request with JSON body containing webhook payload!!'
+        //     );
+        // }
 		try {
-			body = await request.text();
-			payload = JSON.parse(body);
-		} catch (parseError) {
-			return createResponse(
-				400,
-				{ 'Content-Type': ['text/plain'] },
-				'Invalid JSON body: ' + parseError.message
-			);
+			return await applyExperiments(request, {
+				waitUntil: (promise) => { promise.then().catch(); },
+				passThroughOnException: () => {  },
+			}, {
+				snippetId: 2147483647,
+				environment: 'prod',
+				DATA,
+				kvNamespace: 'any',
+				webhookSecret: 'any',
+				accountId: 1234567,
+			});
+		} catch (e) {
+			return createResponse('Error found: ' + e, { status: 400 }); 
 		}
 
-		// Only process if event is "project.web_sdk_artifact_upload"
-		if (payload.event !== 'project.web_sdk_artifact_upload') {
-			return createResponse(
-				200,
-				{ 'Content-Type': ['text/plain'] },
-				'Event ignored'
-			);
-		}
+        let payload;
+        let body;
+        try {
+            body = await request.text();
+            payload = JSON.parse(body);
+        } catch (parseError) {
+            return createResponse(
+                400,
+                { 'Content-Type': ['text/plain'] },
+                'Invalid JSON body: ' + parseError.message,
+            );
+        }
 
-		const key = payload.project_id ? String(payload.project_id) : null;
-		const value = JSON.stringify(payload.data);
+        // Only process if event is "project.web_sdk_artifact_upload"
+        if (payload.event !== 'project.web_sdk_artifact_upload') {
+            return createResponse(
+                200,
+                { 'Content-Type': ['text/plain'] },
+                'Event ignored',
+            );
+        }
 
-		if (!key || !value) {
-			return createResponse(
-				400,
-				{ 'Content-Type': ['text/plain'] },
-				'Missing key or value in request body'
-			);
-		}
+        const key = payload.project_id ? String(payload.project_id) : null;
+        const value = JSON.stringify(payload.data);
 
-		// Validate webhook signature
-		const signature = request.getHeader('X-Hub-Signature')[0];
-		const secret = 'RKQcsROhPZOg5IBPul5KfbWayllEnYd2n1rL3xiYnYU'; // Replace with your actual secret
-		const isValidSignature = await verifyWebhookSignature(body, signature, secret);
+        if (!key || !value) {
+            return createResponse(
+                400,
+                { 'Content-Type': ['text/plain'] },
+                'Missing key or value in request body',
+            );
+        }
 
-		if (!isValidSignature) {
-			return createResponse(
-				401,
-				{ 'Content-Type': ['text/plain'] },
-				'Invalid webhook signature'
-			);
-		}
+        // Validate webhook signature
+        const signature = request.getHeader('X-Hub-Signature')[0];
+        const secret = 'RKQcsROhPZOg5IBPul5KfbWayllEnYd2n1rL3xiYnYU'; // Replace with your actual secret
+        const isValidSignature = await verifyWebhookSignature(body, signature, secret);
 
-		// Store in EdgeKV
-		const edgeKv = new EdgeKV({ namespace: 'default', group: 'default' });
-		try {
-			await edgeKv.putText({ item: key, value: value });
-			return createResponse(
-				200,
-				{ 'Content-Type': ['text/plain'] },
-				'Successfully updated key: ' + key
-			);
-		} catch (kvError) {
-			return createResponse(
-				500,
-				{ 'Content-Type': ['text/plain'] },
-				'Failed to update EdgeKV: ' + kvError.message
-			);
-		}
+        if (!isValidSignature) {
+            return createResponse(
+                401,
+                { 'Content-Type': ['text/plain'] },
+                'Invalid webhook signature',
+            );
+        }
 
-	} catch (error) {
-		return createResponse(
-			500,
-			{ 'Content-Type': ['text/plain'] },
-			'Internal server error: ' + error.message
-		);
-	}
+        // Store in EdgeKV
+        const edgeKv = new EdgeKV({ namespace: 'default', group: 'default' });
+        try {
+            await edgeKv.putText({ item: key, value: value });
+            return createResponse(
+                200,
+                { 'Content-Type': ['text/plain'] },
+                'Successfully updated key: ' + key,
+            );
+        } catch (kvError) {
+            return createResponse(
+                500,
+                { 'Content-Type': ['text/plain'] },
+                'Failed to update EdgeKV: ' + kvError.message,
+            );
+        }
+
+    } catch (error) {
+        return createResponse(
+            500,
+            { 'Content-Type': ['text/plain'] },
+            'Internal server error: ' + error.message,
+        );
+    }
 }

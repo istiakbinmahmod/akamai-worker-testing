@@ -1,2 +1,5 @@
 *.tgz
 node_modules/
+.npmrc
+dist/
+.claude/

@@ -13,11 +13,16 @@ esbuild.build({
   entryPoints: ['src/main.js'],
   bundle: true,
   format: 'esm',
+  minify: true,
+  treeShaking: true,
   outfile: 'dist/main.js',
   plugins: [edgeWorkersGlobals({
     include: ['create-response', 'crypto', 'encoding']
   })],
   external: ['./edgekv.js', './edgekv_tokens.js'],
+  // define: {
+  //   'process.env.NODE_ENV': '"production"',
+  // },
 }).then(() => {
   // Copy edgekv files to dist
   fs.copyFileSync('src/edgekv.js', 'dist/edgekv.js');

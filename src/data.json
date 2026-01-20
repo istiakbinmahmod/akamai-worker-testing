@@ -1,0 +1,439 @@
+{
+  "defines": {
+    "__ANALYTICS__": { "OPTIMIZELY": true },
+    "__CDN_HOST__": "\"https://cdn.optimizely.com\"",
+    "__GEO_CDN_HOST__": "\"//cdn3.optimizely.com\"",
+    "__TARGETING_CONDITIONS__": { "BEHAVIOR": true },
+    "__SEGMENTATION_FEATURES__": {
+      "SOURCE_TYPE": true,
+      "CAMPAIGN": true,
+      "REFERRER": true,
+      "CURRENT_DATE": true,
+      "BROWSER_ID": true,
+      "DEVICE_TYPE": true,
+      "DEVICE": true,
+      "RETURNING": true
+    },
+    "__VIEW_FEATURES__": { "URL": true },
+    "__VIEW_TAG_FEATURES__": {},
+    "__EVENT_FILTERS__": {},
+    "__EVENT_TYPES__": {},
+    "__LIST_TARGETING_ENDPOINT__": "\"https://tapi.optimizely.com/api/js/odds/project/30211730030\"",
+    "__LIVE_CHANGES__": true,
+    "__GROUPS__": true,
+    "__CHANGE__": { "CUSTOM_CODE": true, "ATTRIBUTE": true, "WIDGET": true },
+    "__XDOMAIN__": true,
+    "__JQUERY_LIBRARY__": false,
+    "__CSP__": false,
+    "__RECOMMENDER__": false,
+    "__POLICY__": { "SINGLE_EXPERIMENT": true },
+    "__ENABLE_FORCE_PARAMS__": false,
+    "__MIGRATE_PROJECT_DATA__": false,
+    "__GET_ONLY_PREVIEW_LAYERS__": true,
+    "__DEFAULT_REDIRECT_RELAY_MEDIUM__": "\"COOKIE\"",
+    "__REDIRECT_RELAY_MEDIA__": { "COOKIE": true },
+    "__UNDO_CHANGES_UPON_VIEW_DEACTIVATION__": false,
+    "__VIEW_TRIGGERS__": { "IMMEDIATE": true, "URL_CHANGED": true },
+    "__INNIE_JS_URI__": "\"https://app.optimizely.com/js/innie.js\"",
+    "__EXPERIMENTAL_ENABLE_EET__": true,
+    "__CONSOLIDATE_VIEW_EVENTS__": true,
+    "__ODP_AUDIENCE_STICKY__": true,
+    "__LOTAME_USE_LIGHTNING_TAG__": true,
+    "__LOTAME_FALLBACK__": false,
+    "__CMAB_IS_ENABLED__": true,
+    "__VISUAL_EDITOR_MFE_URL__": "\"https://app.optimizely.com/dist/visual-editor/main.js\"",
+    "__ALLOCATE_PRIORITIZED_EXPERIENCE_TRAFFIC__": true,
+    "__EXPERIMENTAL_COOKIE_XDOMAIN__": true,
+    "__OBSERVE_CHANGES_INDEFINITELY__": true,
+    "__REAPPLY_ATTRIBUTE_CHANGES__": true,
+    "__RUM_SAMPLING_RATE__": 1,
+    "__XDOMAIN_ORIGIN__": "\"https://a20224852609.cdn.optimizely.com\"",
+    "__ASYNC_BASE_URL__": "\"https://cdn.optimizely.com/public/20224852609/data\""
+  },
+  "config": {
+    "accountId": "20224852609",
+    "namespace": "30211730030",
+    "revision": "249",
+    "anonymizeIP": true,
+    "enableForceParameters": false,
+    "experimental": { "trimPages": true },
+    "projectId": "30211730030",
+    "layers": [
+      {
+        "changes": [
+          {
+            "id": "055419E2-0016-4A0A-B846-1E9248FB9A1B",
+            "type": "custom_code",
+            "value": {
+              "webManifestValueType": "function",
+              "webManifestValue": "function($){console.log(\"Test Code\");\n}"
+            },
+            "dependencies": [],
+            "transform": [
+              [
+                2,
+                "head",
+                0,
+                {
+                  "webManifestValueType": "function",
+                  "webManifestValue": "function($){console.log(\"Test Code\");\n}"
+                }
+              ]
+            ]
+          }
+        ],
+        "id": "5392036673617920",
+        "name": null,
+        "commitId": "6056317786259456",
+        "groupId": null,
+        "holdback": 0,
+        "activation": {},
+        "integrationSettings": {},
+        "integrationStringVersion": 2,
+        "experiments": [
+          {
+            "audienceIds": null,
+            "audienceName": null,
+            "changes": null,
+            "id": "6488575210946560",
+            "integrationSettings": null,
+            "variations": [
+              {
+                "id": "4827613059874816",
+                "name": null,
+                "actions": [{ "viewId": "5921860190208000", "changes": [] }]
+              },
+              {
+                "id": "5916938367401984",
+                "name": null,
+                "actions": [
+                  {
+                    "viewId": "5921860190208000",
+                    "changes": [
+                      {
+                        "css": {},
+                        "dependencies": [],
+                        "attributes": {
+                          "html": "Save the Arctic Fox Variation 1"
+                        },
+                        "type": "attribute",
+                        "id": "1906A49B-0131-48FA-A8F6-EEA1DB9D80F8",
+                        "selector": "h1",
+                        "transform": [
+                          [1, "h1", 6, "Save the Arctic Fox Variation 1"]
+                        ]
+                      },
+                      {
+                        "id": "F318963E-A57B-49D4-A629-06C24A3008CD",
+                        "type": "widget",
+                        "dependencies": [],
+                        "name": "Optimizely Tool Tip",
+                        "widget_id": "4889196372951040",
+                        "config": {
+                          "selector": "a",
+                          "insert": "right",
+                          "text": "Sample tool tip text",
+                          "text_color": "#020202",
+                          "bg_color": "#ffffff"
+                        },
+                        "transform": [
+                          [
+                            2,
+                            "",
+                            99,
+                            "widget",
+                            "4889196372951040",
+                            {
+                              "selector": "a",
+                              "insert": "right",
+                              "text": "Sample tool tip text",
+                              "text_color": "#020202",
+                              "bg_color": "#ffffff"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "weightDistributions": [
+              { "entityId": "4827613059874816", "endOfRange": 5000 },
+              { "entityId": "5916938367401984", "endOfRange": 10000 }
+            ],
+            "name": null,
+            "bucketingStrategy": null,
+            "experimentMetadata": {
+              "allocationPolicy": "manual",
+              "layerId": "5392036673617920"
+            },
+            "deployed": false
+          }
+        ],
+        "policy": "single_experiment",
+        "viewIds": ["5921860190208000"],
+        "weightDistributions": null,
+        "decisionMetadata": null,
+        "concluded": false
+      }
+    ],
+    "groups": [],
+    "audiences": [],
+    "listTargetingKeys": [],
+    "visitorAttributes": [
+      {
+        "id": "21329661007",
+        "datatype": "bool",
+        "dcp_datasource_id": "21330330546"
+      },
+      {
+        "id": "21339930621",
+        "datatype": "double",
+        "dcp_datasource_id": "21330330546"
+      },
+      {
+        "id": "21341101448",
+        "datatype": "string",
+        "dcp_datasource_id": "21330330546"
+      }
+    ],
+    "visitorIdLocator": null,
+    "dcpServiceId": "21349480454",
+    "dcpKeyfieldLocators": [
+      {
+        "dcp_datasource_id": "21330330546",
+        "is_optimizely": false,
+        "type": "cookie",
+        "name": "optimizelyEndUserId"
+      },
+      {
+        "dcp_datasource_id": "21363000173",
+        "is_optimizely": false,
+        "type": "uid",
+        "name": ""
+      },
+      {
+        "dcp_datasource_id": "30055370042",
+        "is_optimizely": false,
+        "type": "cookie",
+        "name": "fsdfds"
+      },
+      {
+        "dcp_datasource_id": "5577887957385216",
+        "is_optimizely": true,
+        "type": "uid",
+        "name": ""
+      },
+      {
+        "dcp_datasource_id": "6072468876558336",
+        "is_optimizely": false,
+        "type": "cookie",
+        "name": "custId"
+      }
+    ],
+    "integrationSettings": [],
+    "views": [
+      {
+        "id": "30223580095",
+        "category": "other",
+        "apiName": "30211730030_cjs8090",
+        "name": null,
+        "staticConditions": [
+          "and",
+          [
+            "or",
+            {
+              "match": "substring",
+              "type": "url",
+              "value": "oscar/CJS-8090/index.html"
+            }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": []
+      },
+      {
+        "id": "30264710568",
+        "category": "other",
+        "apiName": "30211730030_cjs8087",
+        "name": null,
+        "staticConditions": [
+          "and",
+          [
+            "or",
+            {
+              "match": "substring",
+              "type": "url",
+              "value": "oscar/CJS-8087/index.html"
+            }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": []
+      },
+      {
+        "id": "30290860346",
+        "category": "other",
+        "apiName": "30211730030_cjs8093",
+        "name": null,
+        "staticConditions": [
+          "and",
+          [
+            "or",
+            { "match": "regex", "type": "url", "value": "/OSCAR\\/CJS-8093/i" }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": []
+      },
+      {
+        "id": "30304830072",
+        "category": "other",
+        "apiName": "30211730030_cjs8091",
+        "name": null,
+        "staticConditions": [
+          "and",
+          [
+            "or",
+            { "match": "substring", "type": "url", "value": "oscar/CJS-8091" }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": []
+      },
+      {
+        "id": "4639148263342080",
+        "category": "other",
+        "apiName": "30211730030_test_ip",
+        "name": null,
+        "staticConditions": [
+          "and",
+          [
+            "or",
+            { "match": "substring", "type": "url", "value": "oscar/CJS-9747" }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": []
+      },
+      {
+        "id": "5362972470542336",
+        "category": "other",
+        "apiName": "30211730030_for_sticky_bucketing",
+        "name": null,
+        "staticConditions": [
+          "and",
+          [
+            "or",
+            { "match": "substring", "type": "url", "value": "oscar/CJS-7796" }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": []
+      },
+      {
+        "id": "5369036351995904",
+        "category": "other",
+        "apiName": "30211730030_cjs8786",
+        "name": null,
+        "staticConditions": [
+          "and",
+          [
+            "or",
+            { "match": "substring", "type": "url", "value": "oscar/CJS-8786" }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": []
+      },
+      {
+        "id": "5921860190208000",
+        "category": "other",
+        "apiName": "30211730030_cjs8111",
+        "name": null,
+        "staticConditions": [
+          "and",
+          [
+            "or",
+            { "match": "substring", "type": "url", "value": "oscar/CJS-8111" }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": [],
+        "activationType": "url_changed"
+      },
+      {
+        "id": "6131976877375488",
+        "category": "other",
+        "apiName": "30211730030_sadasdas",
+        "name": null,
+        "staticConditions": [
+          "or",
+          [
+            "or",
+            { "match": "exact", "type": "url", "value": "google" },
+            { "match": "simple", "type": "url", "value": "www" }
+          ]
+        ],
+        "deactivationEnabled": false,
+        "undoOnDeactivation": false,
+        "tags": []
+      }
+    ],
+    "events": [],
+    "dimensions": [
+      {
+        "id": "4624880864329728",
+        "name": null,
+        "apiName": "custome_attr",
+        "segmentId": null
+      }
+    ],
+    "projectJS": {
+      "webManifestValueType": "function",
+      "webManifestValue": "function(){// Just setting a global variable to chech this work\nwindow.aRandomVar = \"withARandomValue\";\n}"
+    },
+    "plugins": [
+      {
+        "webManifestValueType": "function",
+        "webManifestValue": "function(PluginManager) {\n  var Hogan=function(t){function r(e){if(n[e])return n[e].exports;var i=n[e]={exports:{},id:e,loaded:!1};return t[e].call(i.exports,i,i.exports,r),i.loaded=!0,i.exports}var n={};return r.m=t,r.c=n,r.p=\"\",r(0)}([function(t,r){function n(t){this.r=t,this.buf=\"\"}function e(t,r){var n;if(r&&\"object\"==typeof r)if(void 0!==r[t])n=r[t];return n}function i(t){return String(null===t||void 0===t?\"\":t)}function o(t){return t=i(t),p.test(t)?t.replace(u,\"&amp;\").replace(f,\"&lt;\").replace(c,\"&gt;\").replace(l,\"&#39;\").replace(a,\"&quot;\"):t}t.exports=n,n.prototype={r:function(t,r,n){return\"\"},v:o,t:i,render:function(t,r,n){return this.ri([t],r||{},n)},ri:function(t,r,n){return this.r(t,r,n)},rs:function(t,r,n){var e=t[t.length-1];if(!s(e))return void n(t,r,this);for(var i=0;i<e.length;i++)t.push(e[i]),n(t,r,this),t.pop()},s:function(t,r,n,e,i,o,u){var f;if(s(t)&&0===t.length)return!1;if(f=!!t,!e&&f&&r)r.push(\"object\"==typeof t?t:r[r.length-1]);return f},d:function(t,r,n,i){var o,u=t.split(\".\"),f=this.f(u[0],r,n,i),c=null;if(\".\"===t&&s(r[r.length-2]))f=r[r.length-1];else for(var l=1;l<u.length;l++)if(o=e(u[l],f),void 0!==o)c=f,f=o;else f=\"\";if(i&&!f)return!1;if(!i&&\"function\"==typeof f)r.push(c),f=this.mv(f,r,n),r.pop();return f},f:function(t,r,n,i){for(var o=!1,u=null,f=!1,c=r.length-1;c>=0;c--)if(u=r[c],o=e(t,u),void 0!==o){f=!0;break}if(!f)return i?!1:\"\";if(!i&&\"function\"==typeof o)o=this.mv(o,r,n);return o},b:function(t){this.buf+=t},fl:function(){var t=this.buf;return this.buf=\"\",t},mv:function(t,r,n){var e=r[r.length-1],o=t.call(e);if(\"function\"==typeof o)return this.ct(i(o.call(e)),e,n);else return o}};var u=/&/g,f=/</g,c=/>/g,l=/'/g,a=/\"/g,p=/[&<>\"']/,s=Array.isArray||function(t){return\"[object Array]\"===Object.prototype.toString.call(t)}}]);\n  \nPluginManager.registerWidget({\n      widgetId: '4889196372951040',\n      showFn: function(event) {\n        var $ = window.optimizely.get('jquery');\n        var widget = event.data.config;\n        var _template = new Hogan(function(c,p,i) {var t=this;t.b(i=i||\"\");t.b(\"<div class=\\\"optly-tool-tip-icon\\\" tip-position=\\\"\");t.b(t.v(t.d(\"extension.insert\",c,p,0)));t.b(\"\\\" id=\\\"optimizely-extension-\");t.b(t.v(t.d(\"extension.$instance\",c,p,0)));t.b(\"\\\">\");t.b(\"\\n\" + i);t.b(\"  <svg width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" fill=\\\"none\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\">\");t.b(\"\\n\" + i);t.b(\"    <rect width=\\\"24\\\" height=\\\"24\\\" rx=\\\"12\\\" fill=\\\"black\\\" />\");t.b(\"\\n\" + i);t.b(\"    <path\");t.b(\"\\n\" + i);t.b(\"          d=\\\"M12 4C7.5625 4 4 7.59375 4 12C4 16.4375 7.5625 20 12 20C16.4062 20 20 16.4375 20 12C20 7.59375 16.4062 4 12 4ZM12 19C8.125 19 5 15.875 5 12C5 8.15625 8.125 5 12 5C15.8438 5 19 8.15625 19 12C19 15.875 15.8438 19 12 19ZM12 9.75C12.4062 9.75 12.75 9.4375 12.75 9C12.75 8.59375 12.4062 8.25 12 8.25C11.5625 8.25 11.25 8.59375 11.25 9C11.25 9.4375 11.5625 9.75 12 9.75ZM13.5 15H12.5V11.5C12.5 11.25 12.25 11 12 11H11C10.7188 11 10.5 11.25 10.5 11.5C10.5 11.7812 10.7188 12 11 12H11.5V15H10.5C10.2188 15 10 15.25 10 15.5C10 15.7812 10.2188 16 10.5 16H13.5C13.75 16 14 15.7812 14 15.5C14 15.25 13.75 15 13.5 15Z\\\"\");t.b(\"\\n\" + i);t.b(\"          fill=\\\"white\\\" />\");t.b(\"\\n\" + i);t.b(\"  </svg>\");t.b(\"\\n\" + i);t.b(\"  <div class=\\\"optly-tool-tip\\\" \");t.b(\"\\n\" + i);t.b(\"       tip-position=\\\"\");t.b(t.v(t.d(\"extension.insert\",c,p,0)));t.b(\"\\\"\");t.b(\"\\n\" + i);t.b(\"       style=\\\"color:\");t.b(t.v(t.d(\"extension.text_color\",c,p,0)));t.b(\"; --_bg: \");t.b(t.v(t.d(\"extension.bg_color\",c,p,0)));t.b(\";\\\">\");t.b(\"\\n\" + i);t.b(\"  \t<p>\");t.b(t.v(t.d(\"extension.text\",c,p,0)));t.b(\"</p>\");t.b(\"\\n\" + i);t.b(\"  </div>\");t.b(\"\\n\" + i);t.b(\"</div>\");return t.fl(); })\n        widget.$id = \"4889196372951040\";\n        widget.$instance = event.data.id;\n        widget.$render = _template.render.bind(_template)\n        widget.$fieldDefaults = [{\"name\":\"selector\",\"default_value\":\"li:nth-of-type(2) > a.site-nav__link\"},{\"name\":\"insert\",\"default_value\":\"left\"},{\"name\":\"text\",\"default_value\":\"Sample tool tip text\"},{\"name\":\"text_color\",\"default_value\":\"#020202\"},{\"name\":\"bg_color\",\"default_value\":\"#ffffff\"}];\n        (function(widg) {\n  var i = 0;\n  var field;\n  for (; i < widg.$fieldDefaults.length; ++i) {\n    field = widg.$fieldDefaults[i];\n    if (!widg.hasOwnProperty(field.name)) {\n      widg[field.name] = field.default_value;\n    }\n  }\n  })(widget);\n        widget.$html = _template.render({ widget: widget, extension: widget })\n        var extension = widget;\n        widget._styleTag = document.createElement('style');\nwidget._styleTag.id = 'widget-css-4889196372951040';\nwidget._styleTag.innerHTML = '.optly-tool-tip {  --_p-inline: 1.5ch;  --_p-block: .75ch;  --_triangle-size: 7px;  --_bg: hsl(0 0% 20%);  --isRTL: -1;  --_bottom-tip: conic-gradient(from -30deg at bottom, #0000, #000 1deg 60deg, #0000 61deg) bottom / 100% 50% no-repeat;  --_top-tip: conic-gradient(from 150deg at top, #0000, #000 1deg 60deg, #0000 61deg) top / 100% 50% no-repeat;  --_right-tip: conic-gradient(from -120deg at right, #0000, #000 1deg 60deg, #0000 61deg) right / 50% 100% no-repeat;  --_left-tip: conic-gradient(from 60deg at left, #0000, #000 1deg 60deg, #0000 61deg) left / 50% 100% no-repeat;  pointer-events: none;  user-select: none;  opacity: 0;  transform: translateX(var(--_x, 0)) translateY(var(--_y, 0));  transition: opacity .2s ease, transform .2s ease;  position: absolute;  z-index: 1;  inline-size: max-content;  max-inline-size: 25ch;  text-align: left;  font-size: 14px;  font-weight: regular;  line-height: 18px;  padding: var(--_p-block) var(--_p-inline);  margin: 0;  background: var(--_bg);  color: CanvasText;  max-width: 200px;  max-height: 150px;  p {    display: -webkit-box;    max-width: 200px;    -webkit-line-clamp: 4;    -webkit-box-orient: vertical;    overflow: hidden;    margin: 0;  }   /* create a stacking context for elements with > tool-tips */  :has(> &) {    position: relative;    /* when those parent elements have focus, hover, etc */    &:is(:hover, :focus-visible, :active)>.optly-tool-tip {      opacity: 1;      transition-delay: 200ms;    }  }  /* prepend some prose for screen readers only */  &::before {    content: \"; Has tooltip: \";    clip: rect(1px, 1px, 1px, 1px);    clip-path: inset(50%);    height: 1px;    width: 1px;    margin: -1px;    overflow: hidden;    padding: 0;    position: absolute;  }  /* tooltip shape is a pseudo element so we can cast a shadow */  &::after {    content: \"\";    background: var(--_bg);    position: absolute;    z-index: -1;    inset: 0;    mask: var(--_tip);  }  /* top tooltip styles */  &:is([tip-position=\"top\"],  :not([tip-position]),  [tip-position=\"bottom\"]) {    text-align: left;  }  /* TOP || BLOCK START */  &:is([tip-position=\"top\"], :not([tip-position])) {    inset-inline-start: 50%;    inset-block-end: calc(100% + var(--_p-block) + var(--_triangle-size));    --_x: calc(50% * var(--isRTL));    @media (prefers-reduced-motion: no-preference) {      :has(> &):not(:hover, :active) optly-tool-tip {        --_y: 3px;      }    }    &::after {      --_tip: var(--_bottom-tip);      inset-block-end: calc(var(--_triangle-size) * -1);      border-block-end: var(--_triangle-size) solid transparent;    }  }  /* RIGHT || INLINE END */  &:is([tip-position=\"right\"]) {    inset-inline-start: calc(100% + var(--_p-inline) + var(--_triangle-size));    inset-block-end: 50%;    --_y: 50%;    @media (prefers-reduced-motion: no-preference) {      :has(> &):not(:hover, :active) optly-tool-tip {        --_x: calc(var(--isRTL) * -3px * -1);      }    }    &::after {      --_tip: var(--_left-tip);      inset-inline-start: calc(var(--_triangle-size) * -1);      border-inline-start: var(--_triangle-size) solid transparent;    }    &:dir(rtl)::after {      --_tip: var(--_right-tip);    }  }  /* BOTTOM || BLOCK END */  &:is([tip-position=\"bottom\"]) {    inset-inline-start: 50%;    inset-block-start: calc(100% + var(--_p-block) + var(--_triangle-size));    --_x: calc(50% * var(--isRTL));    @media (prefers-reduced-motion: no-preference) {      :has(> &):not(:hover, :active) optly-tool-tip {        --_y: -3px;      }    }    &::after {      --_tip: var(--_top-tip);      inset-block-start: calc(var(--_triangle-size) * -1);      border-block-start: var(--_triangle-size) solid transparent;    }  }  /* LEFT || INLINE START */  &:is([tip-position=\"left\"]) {    inset-inline-end: calc(100% + var(--_p-inline) + var(--_triangle-size));    inset-block-end: 50%;    --_y: 50%;    @media (prefers-reduced-motion: no-preference) {      :has(> &):not(:hover, :active) optly-tool-tip {        --_x: calc(var(--isRTL) * 3px * -1);      }    }    &::after {      --_tip: var(--_right-tip);      inset-inline-end: calc(var(--_triangle-size) * -1);      border-inline-end: var(--_triangle-size) solid transparent;    }    &:dir(rtl)::after {      --_tip: var(--_left-tip);    }  }}.optly-tool-tip-icon {  position: absolute;  --_p-inline: 1.5ch;  --_p-block: .75ch;  --_triangle-size: 7px;  --isRTL: -1;  :has(> &) {    position: relative;  }  &:is([position=\"top\"],  :not([position]),  [position=\"bottom\"]) {    text-align: center;  }  /* TOP */  &:is([tip-position=\"top\"], :not([tip-position])) {    top: 0%;    left: 0;    right: 0;    margin-top: -27px;  }  /* RIGHT */  &:is([tip-position=\"right\"]) {    Top: 50%;    transform: translateY(-50%);    left: 100%;    margin-left: 5px;  }  /* BOTTOM */  &:is([tip-position=\"bottom\"]) {    bottom: 0%;    left: 0;    right: 0;    margin-bottom: -27px;  }  /* LEFT */  &:is([tip-position=\"left\"]) {    Top: 50%;    transform: translateY(-50%);    margin-left: -30px;  }}';\ndocument.getElementsByTagName('head')[0].appendChild(widget._styleTag);\n        var utils = optimizely.get('utils');\nvar selector = extension.selector;\nutils.waitForElement(selector).then(function(element){\n\tvar html = extension.$html;\n  var insert = extension.insert;\n  element.insertAdjacentHTML('afterend', html);\n});\n\nvar overlays = document.getElementsByTagName('optlyoverlay') ||  HTMLCollection\nif(overlays.length) {\n  overlays[0].remove()\n}\n \n      },\n      hideFn: function(event) {\n        var $ = window.optimizely.get('jquery');\n        var widget = event.data.config;\n        widget.$id = \"4889196372951040\";\n        widget.$instance = event.data.id;\n        widget.$fieldDefaults = [{\"name\":\"selector\",\"default_value\":\"li:nth-of-type(2) > a.site-nav__link\"},{\"name\":\"insert\",\"default_value\":\"left\"},{\"name\":\"text\",\"default_value\":\"Sample tool tip text\"},{\"name\":\"text_color\",\"default_value\":\"#020202\"},{\"name\":\"bg_color\",\"default_value\":\"#ffffff\"}];\n        (function(widg) {\n  var i = 0;\n  var field;\n  for (; i < widg.$fieldDefaults.length; ++i) {\n    field = widg.$fieldDefaults[i];\n    if (!widg.hasOwnProperty(field.name)) {\n      widg[field.name] = field.default_value;\n    }\n  }\n  })(widget);\n        var extension = widget;\n        widget._styleTag = document.getElementById('widget-css-4889196372951040');\nif (widget._styleTag) widget._styleTag.parentNode.removeChild(widget._styleTag);\n        var extensionHtml = document.querySelector('.optly-tool-tip-icon');\nif (extensionHtml) extensionHtml.remove();\n\n      },\n    });\n}\n"
+      }
+    ],
+    "interestGroups": [],
+    "tagGroups": []
+  },
+  "queue": {
+    "unevaluatedViews": [
+      "30223580095",
+      "30264710568",
+      "30290860346",
+      "30304830072",
+      "4639148263342080",
+      "5362972470542336",
+      "5369036351995904",
+      "5921860190208000",
+      "6131976877375488"
+    ],
+    "unevaluatedAudiences": [],
+    "undecidedExperiences": ["5392036673617920"],
+    "unappliedChangesets": []
+  },
+  "results": {
+    "activeViews": [],
+    "inactiveViews": [],
+    "activeAudiences": [],
+    "inactiveAudiences": [],
+    "activeExperiences": [],
+    "inactiveExperiences": [],
+    "appliedChangesets": []
+  }
+}
