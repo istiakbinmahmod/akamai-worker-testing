@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/istiakbinmahmod/akamai-worker-testing#readme",
   "devDependencies": {
+    "@types/akamai-edgeworkers": "^1.1.19",
     "esbuild": "^0.27.2"
   },
   "dependencies": {
-    "@optimizely/edge-delivery": "1.0.6-sha-36482e9.0"
+    "@optimizely/akamai-edgeworker-polyfill": "^0.0.1-rc2",
+    "@optimizely/edge-delivery": "1.0.6-sha-43cb3af.0",
+    "akamai-edge-delivery-polyfill": "1.0.6"
   }
 }

@@ -1,7 +1,7 @@
 var edgekv_access_tokens = {
 "default" : { 
 "name": "istiak-edgekv-token",
-"reference" : "32b7c45f-4516-5828-a0b2-6662ae30141a"
+"reference" : "75b37439-4bee-581d-ac20-2860be3f2d5c"
 }
 }
 export { edgekv_access_tokens };

@@ -10,7 +10,7 @@ if (!fs.existsSync('dist')) {
 
 // Build with esbuild
 esbuild.build({
-  entryPoints: ['src/main.js'],
+  entryPoints: ['src/main.ts'],
   bundle: true,
   format: 'esm',
   minify: true,
@@ -20,9 +20,9 @@ esbuild.build({
     include: ['create-response', 'crypto', 'encoding']
   })],
   external: ['./edgekv.js', './edgekv_tokens.js'],
-  // define: {
-  //   'process.env.NODE_ENV': '"production"',
-  // },
+  banner: {
+    js: `import { EdgeKV } from './edgekv.js';\nglobalThis.EdgeKV = EdgeKV;\n`
+  },
 }).then(() => {
   // Copy edgekv files to dist
   fs.copyFileSync('src/edgekv.js', 'dist/edgekv.js');
