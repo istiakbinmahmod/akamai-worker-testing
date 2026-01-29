@@ -1,5 +1,5 @@
 {
-  "edgeworker-version": "1.30",
+  "edgeworker-version": "1.31",
   "description": "Optimizely Webhook Handler - Processes POST requests with signature verification and stores data in EdgeKV",
   "misc": {
     "dependencies": {
