@@ -17,9 +17,9 @@ esbuild.build({
   treeShaking: true,
   outfile: 'dist/main.js',
   plugins: [edgeWorkersGlobals({
-    include: ['create-response', 'crypto', 'encoding']
+    include: ['create-response', 'crypto', 'encoding', 'http-request', 'html-rewriter', 'streams']
   })],
-  external: ['./edgekv.js', './edgekv_tokens.js'],
+  external: ['./edgekv.js', './edgekv_tokens.js', 'html-rewriter'],
   banner: {
     js: `import { EdgeKV } from './edgekv.js';\nglobalThis.EdgeKV = EdgeKV;\n`
   },
