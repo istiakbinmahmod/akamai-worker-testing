@@ -1,6 +1,5 @@
-import * as DATA from './data.json';
 import { applyExperiments } from '@optimizely/edge-delivery';
-import { RuntimeRequest, installGlobalPolyfills, KVNamespace } from '@optimizely/akamai-edgeworker-polyfill';
+import { Request, installGlobalPolyfills, KVNamespace } from '@optimizely/akamai-edgeworker-polyfill';
 import { EdgeKV } from './edgekv.js';
 import { createResponse } from 'create-response';                                                                                                                
 
@@ -8,7 +7,7 @@ installGlobalPolyfills();
                                                                                                                                                                                     
 export async function responseProvider(request: EW.ResponseProviderRequest): Promise<any> {                                                                                           
     try {                                                                                                                                                                                                                                                                                                 
-        const translatedRequest = new RuntimeRequest(request); 
+        const translatedRequest = new Request(request); 
 
         const edgeKv = new EdgeKV({ namespace: 'default', group: 'default' });
         const optimizelyKV = new KVNamespace(edgeKv);
@@ -23,12 +22,11 @@ export async function responseProvider(request: EW.ResponseProviderRequest): Pro
                 console.log('passThroughOnException called');
             },
         }, {
-            snippetId: 2147483647,
-            environment: 'prod',
-            DATA,
-            webhookSecret: 'ka8n6xJBskaukCJfmKvhfy3d-rnJp-KL53beuSABvRI',
-            accountId: 12345678,
+            accountId: 5949802916085760,
+            devUrl: 'https://example.com',
             kvNamespace: optimizelyKV,
+            webhookSecret: 'GY6Sfxqz-vt_JHE3m7_xYaBPe59pVHLORnpi9Lfehac',
+            environment: 'prod',
         });                               
                                                                                                                                                                                     
     } catch (error) {                                                                                                                                                                 
