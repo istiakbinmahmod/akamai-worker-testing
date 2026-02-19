@@ -23,7 +23,7 @@
     "esbuild": "^0.27.2"
   },
   "dependencies": {
-    "@optimizely/akamai-edgeworker-polyfill": "0.0.3",
+    "@optimizely/akamai-edgeworker-polyfill": "0.0.4-sha-ca423da.0",
     "@optimizely/edge-delivery": "1.0.6",
     "akamai-edge-delivery-polyfill": "1.0.6"
   }
