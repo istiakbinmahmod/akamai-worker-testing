@@ -22,7 +22,7 @@ export async function responseProvider(request: EW.ResponseProviderRequest): Pro
                 console.log('passThroughOnException called');
             },
         }, {
-            accountId: 5949802916085760,
+            snippetId: 5949802916085760,
             devUrl: 'https://example.com',
             kvNamespace: optimizelyKV,
             webhookSecret: 'GY6Sfxqz-vt_JHE3m7_xYaBPe59pVHLORnpi9Lfehac',
