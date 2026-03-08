@@ -1,13 +1,13 @@
 import { applyExperiments } from '@optimizely/edge-delivery';
 import { Request, Response, installGlobalPolyfills, KVNamespace } from '@optimizely/akamai-edgeworker-polyfill';
 import { EdgeKV } from './edgekv.js';
-import { createResponse } from 'create-response';                                                                                                                
+import { createResponse } from 'create-response';
+import { logger } from 'log';
 
-installGlobalPolyfills();                                                                                                                                                                          
-                                                                                                                                                                                    
-export async function responseProvider(request: EW.ResponseProviderRequest): Promise<any> {                                                                                           
-    try {                                                                                                                                                                                                                                                                                                 
-        const translatedRequest = new Request(request); 
+export async function responseProvider(request: EW.ResponseProviderRequest): Promise<any> {
+    try {
+        logger.log('Testing log changes');
+        const translatedRequest = new Request(request);
 
         const edgeKv = new EdgeKV({ namespace: 'default', group: 'default' });
         const optimizelyKV = new KVNamespace(edgeKv);
@@ -26,17 +26,17 @@ export async function responseProvider(request: EW.ResponseProviderRequest): Pro
             kvNamespace: optimizelyKV,
             webhookSecret: 'GY6Sfxqz-vt_JHE3m7_xYaBPe59pVHLORnpi9Lfehac',
             environment: 'prod',
-        });        
-        return response.toAkamaiResponse();                       
-                                                                                                                                                                                    
-    } catch (error) {                                                                                                                                                                 
-        console.error('Error in responseProvider:', error);                                                                                                                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                    
-        return createResponse('Internal server error: ' + (error?.toString() || 'Unknown error'), {                                                                 
-            status: 500,                                                                                                                                                              
-            headers: {                                                                                                                                                                
-                'Content-Type': ['text/plain'],                                                                                                                                        
-            },                                                                                                                                                                         
-        });                                                                                                                                                                           
-    }                                                                                                                                                                                 
+        });
+        return response.toAkamaiResponse();
+
+    } catch (error) {
+        console.error('Error in responseProvider:', error);
+
+        return createResponse('Internal server error: ' + (error?.toString() || 'Unknown error'), {
+            status: 500,
+            headers: {
+                'Content-Type': ['text/plain'],
+            },
+        });
+    }
 }                                                                                                                                                                                     
